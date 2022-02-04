@@ -6,23 +6,32 @@ import Button from 'components/ui/Button';
 import skillsIllustration from 'assets/skills.svg';
 import { Wrapper, SkillsWrapper, Details, Thumbnail } from './styles';
 
-const Skills = () => {
+const Skills = ({
+  id,
+  title,
+  imgUrl,
+  description,
+  buttonText,
+}: {
+  id: string;
+  title: string;
+  imgUrl: any;
+  description: string;
+  buttonText: string;
+}) => {
   const { theme } = useTheme();
 
   return (
-    <Wrapper id="about">
+    <Wrapper id={id}>
       <SkillsWrapper as={Container}>
         <Thumbnail>
-          <Image src={skillsIllustration} alt="I’m John and I’m a Backend & Devops engineer!" />
+          <Image src={imgUrl} alt="I’m John and I’m a Backend & Devops engineer!" />
         </Thumbnail>
         <Details theme={theme}>
-          <h1>More about me</h1>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-            industry’s standard dummy.
-          </p>
+          <h2>{title}</h2>
+          <p>{description}</p>
           <Link href="#contact" passHref>
-            <Button as="a">Hire me</Button>
+            <Button as="a">{buttonText}</Button>
           </Link>
         </Details>
       </SkillsWrapper>

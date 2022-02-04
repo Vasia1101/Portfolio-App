@@ -4,16 +4,21 @@ import { RepositoryEdge } from 'generated/graphql';
 import Layout from 'components/ui/Layout';
 import SEO from 'components/SEO';
 import Intro from 'components/modules/Intro';
-import Projects from 'components/modules/Projects';
+import OpenSource from 'components/modules/OpenSource';
 import Skills from 'components/modules/Skills';
 import Contact from 'components/modules/Contact';
+
+import dataAbout from 'data/about';
+import dataSkills from 'data/skills';
 
 const HomePage = ({ repos }: InferGetStaticPropsType<typeof getStaticProps>) => (
   <Layout>
     <SEO />
     <Intro />
-    <Projects data={repos} />
-    <Skills />
+    <Skills {...dataAbout} />
+    <OpenSource data={repos} />
+    <Skills {...dataSkills} />
+    <OpenSource data={repos} />
     <Contact />
   </Layout>
 );
@@ -26,7 +31,7 @@ export const getStaticProps = async () => {
       query: `
 				query viewer {
 					viewer {
-						repositories(first: 8, orderBy: {field: STARGAZERS, direction: DESC}) {
+						repositories(first: 9, orderBy: {field: STARGAZERS, direction: DESC}) {
 							edges {
 								node {
 									id

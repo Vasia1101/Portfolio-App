@@ -11,7 +11,7 @@ const Navbar = () => {
     <Wrapper as={Container}>
       <Link href="/" passHref>
         <Brand as="a" theme={theme}>
-          John Doe
+          Vasyl Haida
         </Brand>
       </Link>
       <NavbarLinks desktop />

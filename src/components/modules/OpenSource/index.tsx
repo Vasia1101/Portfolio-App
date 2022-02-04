@@ -6,12 +6,12 @@ import Fork from 'components/ui/Icons/Fork';
 import Star from 'components/ui/Icons/Star';
 import { Wrapper, Grid, Item, Content, Stats, Languages } from './styles';
 
-const Projects = ({ data }: { data: RepositoryEdge[] }) => {
+const OpenSource = ({ data }: { data: RepositoryEdge[] }) => {
   const { theme } = useTheme();
 
   return (
-    <Wrapper as={Container} id="projects">
-      <h2>Projects</h2>
+    <Wrapper as={Container} id="openSource">
+      <h2>Open Source</h2>
       <Grid>
         {data &&
           data.map(({ node }) => {
@@ -51,4 +51,4 @@ const Projects = ({ data }: { data: RepositoryEdge[] }) => {
   );
 };
 
-export default Projects;
+export default OpenSource;

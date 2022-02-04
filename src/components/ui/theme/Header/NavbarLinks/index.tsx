@@ -18,6 +18,12 @@ const NavbarLinks = ({ desktop }: NavbarLinksProps) => {
       <Link href="#projects">
         <a>Projects</a>
       </Link>
+      <Link href="#skills">
+        <a>Skills</a>
+      </Link>
+      <Link href="#openSource">
+        <a>Open Source</a>
+      </Link>
       <Link href="#contact">
         <a>Contact</a>
       </Link>
