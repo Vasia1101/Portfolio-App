@@ -14,7 +14,7 @@ const OpenSource = ({ data }: { data: RepositoryEdge[] }) => {
       <h2>Open Source</h2>
       <Grid>
         {data &&
-          data.map(({ node }) => {
+          data?.map(({ node }) => {
             if (!node) return null;
             return (
               <Item key={node.id} as="a" href={node.url} target="_blank" rel="noopener noreferrer" theme={theme}>
