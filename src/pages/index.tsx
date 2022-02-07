@@ -18,7 +18,7 @@ const HomePage = ({ repos }: InferGetStaticPropsType<typeof getStaticProps>) => 
     <Skills {...dataAbout} />
     <OpenSource data={repos} />
     <Skills {...dataSkills} />
-    {/* <OpenSource data={repos} /> */}
+    <OpenSource data={repos} />
     <Contact />
   </Layout>
 );
