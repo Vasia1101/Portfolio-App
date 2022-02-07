@@ -1,4 +1,9 @@
-import { Wrapper, Grid, Item, Content, Stats, Languages } from './styles';
+// import { Wrapper } from './styles';
+import styled from 'styled-components';
+
+export const Wrapper = styled.div`
+  padding: 2rem 0;
+`;
 
 const Project = () => {
   return (
