@@ -7,6 +7,7 @@ import Intro from 'components/modules/Intro';
 import OpenSource from 'components/modules/OpenSource';
 import Skills from 'components/modules/Skills';
 import Contact from 'components/modules/Contact';
+import Project from 'components/modules/Projects';
 
 import dataAbout from 'data/about';
 import dataSkills from 'data/skills';
@@ -16,7 +17,7 @@ const HomePage = ({ repos }: InferGetStaticPropsType<typeof getStaticProps>) => 
     <SEO />
     <Intro />
     <Skills {...dataAbout} />
-    <OpenSource data={repos} />
+    <Project />
     <Skills {...dataSkills} />
     <OpenSource data={repos} />
     <Contact />
