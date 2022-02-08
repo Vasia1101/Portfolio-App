@@ -1,4 +1,5 @@
 // import { Wrapper } from './styles';
+import Container from 'components/ui/Container';
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
@@ -7,7 +8,7 @@ export const Wrapper = styled.div`
 
 const Project = () => {
   return (
-    <Wrapper>
+    <Wrapper as={Container} id="projects">
       <h2>Projects</h2>
     </Wrapper>
   );
