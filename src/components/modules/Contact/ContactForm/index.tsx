@@ -4,6 +4,7 @@ import Recaptcha from 'react-google-recaptcha';
 import * as Yup from 'yup';
 import Button from 'components/ui/Button';
 import Input from 'components/ui/Input';
+import url from 'data/config';
 import { Error, Center, InputField } from './styles';
 
 const ContactForm = () => (
@@ -17,28 +18,18 @@ const ContactForm = () => (
     }}
     validationSchema={Yup.object().shape({
       name: Yup.string().required('Full name field is required'),
-      email: Yup.string()
-        .email('Invalid email')
-        .required('Email field is required'),
+      email: Yup.string().email('Invalid email').required('Email field is required'),
       message: Yup.string().required('Message field is required'),
       recaptcha:
-        process.env.NODE_ENV !== 'development'
-          ? Yup.string().required('Robots are not welcome yet!')
-          : Yup.string(),
+        process.env.NODE_ENV !== 'development' ? Yup.string().required('Robots are not welcome yet!') : Yup.string(),
     })}
-    onSubmit={async (
-      { name, email, message },
-      { setSubmitting, resetForm, setFieldValue }
-    ) => {
+    onSubmit={async ({ name, email, message }, { setSubmitting, resetForm, setFieldValue }) => {
       try {
         await axios({
           method: 'POST',
-          url:
-            process.env.NODE_ENV !== 'development'
-              ? `${process.env.NEXT_PUBLIC_PORTFOLIO_URL}/api/contact`
-              : 'http://localhost:3040/api/contact',
+          url: process.env.NODE_ENV !== 'development' ? `${url}/api/contact` : 'http://localhost:3040/api/contact',
           headers: {
-            'Content-Type': 'application/json',
+            'Content-Type': 'application/json; charset=UTF-8',
           },
           data: JSON.stringify({
             name,
@@ -97,27 +88,21 @@ const ContactForm = () => (
           />
           <ErrorMessage component={Error} name="message" />
         </InputField>
-        {values.name &&
-          values.email &&
-          values.message &&
-          process.env.NODE_ENV !== 'development' && (
-            <InputField>
-              <FastField
-                component={Recaptcha}
-                sitekey={process.env.NEXT_PUBLIC_PORTFOLIO_RECAPTCHA_KEY}
-                name="recaptcha"
-                onChange={(value: string) => setFieldValue('recaptcha', value)}
-              />
-              <ErrorMessage component={Error} name="recaptcha" />
-            </InputField>
-          )}
+        {values.name && values.email && values.message && process.env.NODE_ENV !== 'development' && (
+          <InputField>
+            <FastField
+              component={Recaptcha}
+              sitekey={process.env.NEXT_PUBLIC_PORTFOLIO_RECAPTCHA_KEY}
+              name="recaptcha"
+              onChange={(value: string) => setFieldValue('recaptcha', value)}
+            />
+            <ErrorMessage component={Error} name="recaptcha" />
+          </InputField>
+        )}
         {values.success && (
           <InputField>
             <Center>
-              <h4>
-                Your message has been successfully sent, I will get back to you
-                ASAP!
-              </h4>
+              <h4>Your message has been successfully sent, I will get back to you ASAP!</h4>
             </Center>
           </InputField>
         )}
