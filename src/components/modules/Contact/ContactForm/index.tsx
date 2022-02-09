@@ -4,7 +4,7 @@ import Recaptcha from 'react-google-recaptcha';
 import * as Yup from 'yup';
 import Button from 'components/ui/Button';
 import Input from 'components/ui/Input';
-import url from 'data/config';
+import config from 'data/config';
 import { Error, Center, InputField } from './styles';
 
 const ContactForm = () => (
@@ -27,7 +27,8 @@ const ContactForm = () => (
       try {
         await axios({
           method: 'POST',
-          url: process.env.NODE_ENV !== 'development' ? `${url}/api/contact` : 'http://localhost:3040/api/contact',
+          url:
+            process.env.NODE_ENV !== 'development' ? `${config.url}/api/contact` : 'http://localhost:3040/api/contact',
           headers: {
             'Content-Type': 'application/json; charset=UTF-8',
           },
