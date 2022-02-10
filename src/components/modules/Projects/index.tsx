@@ -1,10 +1,5 @@
-// import { Wrapper } from './styles';
+import { Wrapper } from './styles';
 import Container from 'components/ui/Container';
-import styled from 'styled-components';
-
-export const Wrapper = styled.div`
-  padding: 2rem 0;
-`;
 
 const Project = () => {
   return (

@@ -4,7 +4,7 @@ export default {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://portfolio-next.smakosh.com/',
+    url: 'https://portfolio-app-vasia1101.vercel.app',
     site_name: 'Portfolio Vasyl Haida',
     images: [
       {

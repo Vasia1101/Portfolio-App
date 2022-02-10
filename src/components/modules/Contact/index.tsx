@@ -10,10 +10,7 @@ const Contact = () => (
       <ContactForm />
     </Details>
     <Thumbnail>
-      <Image
-        src={contactIllustration}
-        alt="I’m John and I’m a Backend & Devops engineer!"
-      />
+      <Image src={contactIllustration} alt="I’m Vasyl and I’m a Web Developer!" />
     </Thumbnail>
   </Wrapper>
 );
