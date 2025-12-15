@@ -25,50 +25,74 @@ const HomePage = ({ repos }: InferGetStaticPropsType<typeof getStaticProps>) => 
 );
 
 export const getStaticProps = async () => {
-  const res = await axios({
-    url: 'https://api.github.com/graphql',
-    method: 'post',
-    data: {
-      query: `
-				query viewer {
-					viewer {
-						repositories(first: 9, orderBy: {field: STARGAZERS, direction: DESC}) {
-							edges {
-								node {
-									id
-									name
-									url
-									description
-									stargazers {
-										totalCount
-									}
-									forkCount
-									languages(first: 3) {
-										nodes {
-											id
-											name
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			`,
-    },
-    headers: {
-      Authorization: `bearer ${process.env.GITHUB_TOKEN}`,
-    },
-  });
+  const token = process.env.GITHUB_TOKEN;
 
-  const repos: RepositoryEdge[] = res.data.data.viewer.repositories.edges;
+  if (!token) {
+    console.warn('GITHUB_TOKEN is not set. Skipping GitHub repository fetch.');
 
-  return {
-    props: {
-      repos,
-    },
-    revalidate: 10,
-  };
+    return {
+      props: {
+        repos: [],
+      },
+      revalidate: 10,
+    };
+  }
+
+  try {
+    const res = await axios({
+      url: 'https://api.github.com/graphql',
+      method: 'post',
+      data: {
+        query: `
+                                query viewer {
+                                        viewer {
+                                                repositories(first: 9, orderBy: {field: STARGAZERS, direction: DESC}) {
+                                                        edges {
+                                                                node {
+                                                                        id
+                                                                        name
+                                                                        url
+                                                                        description
+                                                                        stargazers {
+                                                                                totalCount
+                                                                        }
+                                                                        forkCount
+                                                                        languages(first: 3) {
+                                                                                nodes {
+                                                                                        id
+                                                                                        name
+                                                                                }
+                                                                        }
+                                                                }
+                                                        }
+                                                }
+                                        }
+                                }
+                        `,
+      },
+      headers: {
+        Authorization: `bearer ${token}`,
+      },
+    });
+
+    const repos: RepositoryEdge[] = res.data.data.viewer.repositories.edges;
+
+    return {
+      props: {
+        repos,
+      },
+      revalidate: 10,
+    };
+  } catch (error) {
+    console.error('Failed to fetch GitHub repositories', error);
+
+    return {
+      props: {
+        repos: [],
+      },
+      revalidate: 10,
+    };
+  }
 };
 
 export default HomePage;
