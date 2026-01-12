@@ -24,7 +24,7 @@ const Skills = ({
     <Wrapper id={id}>
       <SkillsWrapper as={Container}>
         <Thumbnail>
-          <Image src={imgUrl} alt="I’m John and I’m a Backend & Devops engineer!" />
+          <Image src={imgUrl} alt="I’m Vasyl and I’m a Backend & Devops engineer!" />
         </Thumbnail>
         <Details theme={theme}>
           <h2>{title}</h2>

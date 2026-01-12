@@ -1,25 +1,11 @@
 const projects = [
   {
-    title: 'E-commerce Dashboard',
+    title: 'Sports Articles Monorepo',
     description:
-      'Analytics dashboard for monitoring orders, revenue, and customer activity with role-based access.',
-    stack: ['Next.js', 'TypeScript', 'Chart.js'],
-    link: 'https://example.com/ecommerce-dashboard',
-  },
-  {
-    title: 'Travel Planner',
-    description:
-      'Trip planning experience with interactive maps, saved itineraries, and collaborative sharing.',
-    stack: ['React', 'Leaflet', 'Firebase'],
-    link: 'https://example.com/travel-planner',
-  },
-  {
-    title: 'Community Platform',
-    description:
-      'Social hub for events and resources featuring real-time chat and moderated communities.',
-    stack: ['Next.js', 'Node.js', 'PostgreSQL'],
-    link: 'https://example.com/community-platform',
-  },
+      'The project demonstrates server-side rendering, infinite pagination, GraphQL caching strategies, and a clean monorepo architecture.',
+    stack: ['Next.js', 'Apollo GraphQL', 'Prisma'],
+    link: 'https://sports-articles-monorepo-frontend.vercel.app/',
+  }
 ];
 
 export default projects;
