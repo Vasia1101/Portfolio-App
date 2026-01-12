@@ -10,7 +10,11 @@ const icons = {
   Telegram: TelegramIcon,
   Github: GithubIcon,
   Linkeding: LinkedingIcon,
-};
+} as const;
+
+type SocialName = keyof typeof icons;
+
+const socialLinks = social as Array<{ id: number; name: SocialName; link: string }>;
 
 const Footer = () => (
   <Wrapper>
@@ -33,7 +37,7 @@ const Footer = () => (
         </span>
       </Details>
       <Links>
-        {social.map(({ id, name, link }) => (
+        {socialLinks.map(({ id, name, link }) => (
           <a key={id} href={link} target="_blank" rel="noopener noreferrer" aria-label={`follow me on ${name}`}>
             <Image width={24} height={24} layout="fixed" src={icons[name]} alt={name} />
           </a>
